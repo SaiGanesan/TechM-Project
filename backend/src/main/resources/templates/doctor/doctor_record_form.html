@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Doctor Profile Form</title>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <h1>Doctor Profile</h1>
+
+    <form th:action="@{/doctor/records/save}" th:object="${doctorRecord}" method="post">
+
+        <input type="hidden" th:field="*{id}" />
+        <input type="hidden" th:field="*{doctorId}" />
+
+        <label for="fullName">Full Name:</label><br />
+        <input type="text" id="fullName" th:field="*{fullName}" required /><br /><br />
+
+        <label for="gender">Gender:</label><br />
+        <select id="gender" th:field="*{gender}" required>
+            <option value="" disabled>Select gender</option>
+            <option value="Male" th:selected="${doctorRecord.gender == 'Male'}">Male</option>
+            <option value="Female" th:selected="${doctorRecord.gender == 'Female'}">Female</option>
+            <option value="Other" th:selected="${doctorRecord.gender == 'Other'}">Other</option>
+        </select><br /><br />
+
+        <label for="dateOfBirth">Date of Birth:</label><br />
+        <input type="date" id="dateOfBirth" th:field="*{dateOfBirth}" required /><br /><br />
+
+        <label for="contactNumber">Contact Number:</label><br />
+        <input type="tel" id="contactNumber" th:field="*{contactNumber}" required /><br /><br />
+
+        <label for="emailAddress">Email Address:</label><br />
+        <input type="email" id="emailAddress" th:field="*{emailAddress}" required /><br /><br />
+
+        <label for="address">Address:</label><br />
+        <textarea id="address" th:field="*{address}" rows="3" required></textarea><br /><br />
+
+        <label for="emergencyContactName">Emergency Contact Name:</label><br />
+        <input type="text" id="emergencyContactName" th:field="*{emergencyContactName}" required /><br /><br />
+
+        <label for="emergencyContactNumber">Emergency Contact Number:</label><br />
+        <input type="tel" id="emergencyContactNumber" th:field="*{emergencyContactNumber}" required /><br /><br />
+
+        <label for="specialty">Specialty:</label><br />
+        <input type="text" id="specialty" th:field="*{specialty}" /><br /><br />
+
+        <label for="qualifications">Qualifications:</label><br />
+        <textarea id="qualifications" th:field="*{qualifications}" rows="3"></textarea><br /><br />
+
+        <label for="medicalLicenseNumber">Medical License Number:</label><br />
+        <input type="text" id="medicalLicenseNumber" th:field="*{medicalLicenseNumber}" /><br /><br />
+
+        <label for="hospitalAffiliation">Hospital Affiliation:</label><br />
+        <input type="text" id="hospitalAffiliation" th:field="*{hospitalAffiliation}" /><br /><br />
+
+        <label for="consultingHours">Consulting Hours:</label><br />
+        <input type="text" id="consultingHours" th:field="*{consultingHours}" /><br /><br />
+
+        <label for="languagesSpoken">Languages Spoken:</label><br />
+        <input type="text" id="languagesSpoken" th:field="*{languagesSpoken}" /><br /><br />
+
+        <button type="submit">Save Profile</button>
+    </form>
+</body>
+</html>

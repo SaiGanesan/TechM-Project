@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Profile</title>
+</head>
+<body>
+    <h1>Admin Profile</h1>
+
+    <div>
+        <strong>Full Name:</strong> <span th:text="${adminRecord.fullName}"></span><br />
+        <strong>Gender:</strong> <span th:text="${adminRecord.gender}"></span><br />
+        <strong>Date of Birth:</strong> <span th:text="${adminRecord.dateOfBirth}"></span><br />
+        <strong>Contact Number:</strong> <span th:text="${adminRecord.contactNumber}"></span><br />
+        <strong>Email Address:</strong> <span th:text="${adminRecord.emailAddress}"></span><br />
+        <strong>Address:</strong> <span th:text="${adminRecord.address}"></span><br />
+    </div>
+
+    <p><a th:href="@{/admin/records/form(adminId=${adminRecord.adminId})}">Edit Profile</a></p>
+    
+<form th:action="@{/}" method="get">
+    <button type="submit">Logout</button>
+</form>
+</body>
+</html>

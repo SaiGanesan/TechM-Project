@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Doctor Profile View</title>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <h1>Doctor Profile Details</h1>
+
+    <div>
+        <strong>Full Name:</strong> <span th:text="${doctorRecord.fullName}"></span><br />
+        <strong>Gender:</strong> <span th:text="${doctorRecord.gender}"></span><br />
+        <strong>Date of Birth:</strong> <span th:text="${doctorRecord.dateOfBirth}"></span><br />
+        <strong>Contact Number:</strong> <span th:text="${doctorRecord.contactNumber}"></span><br />
+        <strong>Email Address:</strong> <span th:text="${doctorRecord.emailAddress}"></span><br />
+        <strong>Address:</strong> <span th:text="${doctorRecord.address}"></span><br />
+        <strong>Emergency Contact Name:</strong> <span th:text="${doctorRecord.emergencyContactName}"></span><br />
+        <strong>Emergency Contact Number:</strong> <span th:text="${doctorRecord.emergencyContactNumber}"></span><br />
+        <strong>Specialty:</strong> <span th:text="${doctorRecord.specialty}"></span><br />
+        <strong>Qualifications:</strong> <span th:text="${doctorRecord.qualifications}"></span><br />
+        <strong>Medical License Number:</strong> <span th:text="${doctorRecord.medicalLicenseNumber}"></span><br />
+        <strong>Hospital Affiliation:</strong> <span th:text="${doctorRecord.hospitalAffiliation}"></span><br />
+        <strong>Consulting Hours:</strong> <span th:text="${doctorRecord.consultingHours}"></span><br />
+        <strong>Languages Spoken:</strong> <span th:text="${doctorRecord.languagesSpoken}"></span><br />
+    </div>
+
+    <p><a th:href="@{/doctor/records/form(doctorId=${doctorRecord.doctorId})}">Edit Profile</a></p>
+    
+    <form th:action="@{/}" method="get">
+    <button type="submit">Logout</button>
+</form>
+    
+</body>
+</html>

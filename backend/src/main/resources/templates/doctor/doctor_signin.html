@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Doctor Signin</title>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <h1>Doctor Signin</h1>
+    <form th:action="@{/doctor/signin}" method="post" th:object="${doctor}">
+        <label for="username">Username:</label><br />
+        <input type="text" id="username" th:field="*{username}" required /><br /><br />
+
+        <label for="password">Password:</label><br />
+        <input type="password" id="password" th:field="*{password}" required /><br /><br />
+
+        <button type="submit">Sign In</button>
+    </form>
+
+    <div th:if="${error}">
+        <p style="color:red;" th:text="${error}"></p>
+    </div>
+
+    <p>Don't have an account? <a th:href="@{/doctor/signup}">Sign up here</a></p>
+</body>
+</html>

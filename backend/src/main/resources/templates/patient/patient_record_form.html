@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Patient Record Form</title>
+</head>
+<body>
+<h2>Update Personal Details</h2>
+<form th:action="@{/patient/records/save}" th:object="${record}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <input type="hidden" th:field="*{patientId}" />
+
+    Full Name: <input type="text" th:field="*{fullName}" required/><br/>
+    Gender: <input type="text" th:field="*{gender}" required/><br/>
+    DOB:
+    <input type="date"
+           th:field="*{dateOfBirth}"
+           th:attr="required=${record.id == null}" /><br/>
+    Contact Number: <input type="text" th:field="*{contactNumber}" required/><br/>
+    Email: <input type="email" th:field="*{emailAddress}" required/><br/>
+    Address: <input type="text" th:field="*{address}" required/><br/>
+    Emergency Contact Name: <input type="text" th:field="*{emergencyContactName}" required/><br/>
+    Emergency Contact Number: <input type="text" th:field="*{emergencyContactNumber}" required/><br/>
+
+    Blood Group: <input type="text" th:field="*{bloodGroup}" required/><br/>
+    Allergies: <input type="text" th:field="*{allergies}" /><br/>
+    Chronic Conditions: <input type="text" th:field="*{chronicConditions}" /><br/>
+    Current Medications: <input type="text" th:field="*{currentMedications}" /><br/>
+    Doctor Assigned: <input type="text" th:field="*{doctorAssigned}" /><br/>
+    Diagnosis/Reason for Visit: <input type="text" th:field="*{diagnosisReasonForVisit}" /><br/>
+
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>

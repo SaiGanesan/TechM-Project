@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, Admin</h1>
+    <button onclick="location.href='/admin/view-doctors'">View Doctor Records</button>
+    <button onclick="location.href='/admin/view-patients'">View Patient Records</button>
+    <button onclick="location.href='/admin/records/view?adminId=${adminId}'">View Own Record</button>
+    <p><a href="/">Logout</a></p>
+</body>
+</html>

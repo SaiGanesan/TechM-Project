@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Doctor Record Details</title>
+    <style>
+        .hidden { display: none; }
+        .container { max-width: 600px; margin: auto; padding: 20px; font-family: Arial, sans-serif; }
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        input, textarea { width: 100%; padding: 6px; margin-top: 4px; box-sizing: border-box; }
+        button, .button-link {
+            margin-top: 15px;
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .button-link {
+            text-decoration: none;
+            background-color: #eee;
+            border: 1px solid #ccc;
+            display: inline-block;
+            text-align: center;
+            color: black;
+        }
+    </style>
+    <script>
+        function toggleEditMode() {
+            const viewDiv = document.getElementById('viewMode');
+            const editForm = document.getElementById('editMode');
+            viewDiv.style.display = (viewDiv.style.display === 'none') ? 'block' : 'none';
+            editForm.style.display = (editForm.style.display === 'none') ? 'block' : 'none';
+        }
+
+        function cancelEdit() {
+            document.getElementById('viewMode').style.display = 'block';
+            document.getElementById('editMode').style.display = 'none';
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('viewMode').style.display = 'block';
+            document.getElementById('editMode').style.display = 'none';
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+
+    <h1>Doctor Record Details</h1>
+
+    <!-- View Mode -->
+    <div id="viewMode" th:if="${doctorRecord != null}">
+        <p><strong>Full Name:</strong> <span th:text="${doctorRecord.fullName != null ? doctorRecord.fullName : 'N/A'}">Full Name</span></p>
+        <p><strong>Email:</strong> <span th:text="${doctorRecord.emailAddress != null ? doctorRecord.emailAddress : 'N/A'}">email@example.com</span></p>
+        <p><strong>Contact Number:</strong> <span th:text="${doctorRecord.contactNumber != null ? doctorRecord.contactNumber : 'N/A'}">1234567890</span></p>
+        <p><strong>Specialty:</strong> <span th:text="${doctorRecord.specialty != null ? doctorRecord.specialty : 'N/A'}">Specialty</span></p>
+        <p><strong>Qualifications:</strong> <span th:text="${doctorRecord.qualifications != null ? doctorRecord.qualifications : 'N/A'}">Qualifications</span></p>
+        <p><strong>Medical License Number:</strong> <span th:text="${doctorRecord.medicalLicenseNumber != null ? doctorRecord.medicalLicenseNumber : 'N/A'}">License#</span></p>
+        <p><strong>Hospital Affiliation:</strong> <span th:text="${doctorRecord.hospitalAffiliation != null ? doctorRecord.hospitalAffiliation : 'N/A'}">Hospital</span></p>
+        <p><strong>Languages Spoken:</strong> <span th:text="${doctorRecord.languagesSpoken != null ? doctorRecord.languagesSpoken : 'N/A'}">Languages</span></p>
+        <p><strong>Consulting Hours:</strong> <span th:text="${doctorRecord.consultingHours != null ? doctorRecord.consultingHours : 'N/A'}">Hours</span></p>
+        <p><strong>Address:</strong> <span th:text="${doctorRecord.address != null ? doctorRecord.address : 'N/A'}">Address</span></p>
+        <p><strong>Gender:</strong> <span th:text="${doctorRecord.gender != null ? doctorRecord.gender : 'N/A'}">Gender</span></p>
+        <p><strong>Date of Birth:</strong>
+            <span th:text="${doctorRecord.dateOfBirth != null ? #temporals.format(doctorRecord.dateOfBirth, 'yyyy-MM-dd') : 'N/A'}">DOB</span>
+        </p>
+        <p><strong>Emergency Contact Name:</strong> <span th:text="${doctorRecord.emergencyContactName != null ? doctorRecord.emergencyContactName : 'N/A'}">Emergency Contact</span></p>
+        <p><strong>Emergency Contact Number:</strong> <span th:text="${doctorRecord.emergencyContactNumber != null ? doctorRecord.emergencyContactNumber : 'N/A'}">Emergency Number</span></p>
+
+        <button type="button" onclick="toggleEditMode()">Edit</button>
+        <a th:href="@{/admin/view-doctors}" class="button-link">Back to List</a>
+       
+    </div>
+
+    <!-- Edit Mode -->
+    <div id="editMode" style="display: none;">
+        <form th:action="@{/admin/doctor/edit/{id}(id=${doctorRecord.id})}" th:object="${doctorRecord}" method="post">
+
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" th:field="*{fullName}" />
+
+            <label for="emailAddress">Email</label>
+            <input type="email" id="emailAddress" th:field="*{emailAddress}" />
+
+            <label for="contactNumber">Contact Number</label>
+            <input type="text" id="contactNumber" th:field="*{contactNumber}" />
+
+            <label for="specialty">Specialty</label>
+            <input type="text" id="specialty" th:field="*{specialty}" />
+
+            <label for="qualifications">Qualifications</label>
+            <input type="text" id="qualifications" th:field="*{qualifications}" />
+
+            <label for="medicalLicenseNumber">Medical License Number</label>
+            <input type="text" id="medicalLicenseNumber" th:field="*{medicalLicenseNumber}" />
+
+            <label for="hospitalAffiliation">Hospital Affiliation</label>
+            <input type="text" id="hospitalAffiliation" th:field="*{hospitalAffiliation}" />
+
+            <label for="languagesSpoken">Languages Spoken</label>
+            <input type="text" id="languagesSpoken" th:field="*{languagesSpoken}" />
+
+            <label for="consultingHours">Consulting Hours</label>
+            <input type="text" id="consultingHours" th:field="*{consultingHours}" />
+
+            <label for="address">Address</label>
+            <textarea id="address" th:field="*{address}"></textarea>
+
+            <label for="gender">Gender</label>
+            <input type="text" id="gender" th:field="*{gender}" />
+
+            <label for="dateOfBirth">Date of Birth</label>
+            <input type="date" id="dateOfBirth" th:field="*{dateOfBirth}" />
+
+            <label for="emergencyContactName">Emergency Contact Name</label>
+            <input type="text" id="emergencyContactName" th:field="*{emergencyContactName}" />
+
+            <label for="emergencyContactNumber">Emergency Contact Number</label>
+            <input type="text" id="emergencyContactNumber" th:field="*{emergencyContactNumber}" />
+
+            <button type="submit">Save</button>
+            <button type="button" onclick="cancelEdit()">Cancel</button>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Doctor Records</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #eee;
+        }
+        a.button {
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Doctor Records</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Specialty</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="doctor : ${doctors}">
+                <td th:text="${doctor.fullName}"></td>
+                <td th:text="${doctor.specialty}"></td>
+                <td th:text="${doctor.emailAddress}"></td>
+                <td>
+                    <a th:href="@{'/admin/doctor/view/' + ${doctor.id}}" class="button">View</a>
+                   
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>
+       
+        
+<form th:action="@{/}" method="get">
+    <button type="submit">Logout</button>
+</form>
+    </p>
+</body>
+</html>

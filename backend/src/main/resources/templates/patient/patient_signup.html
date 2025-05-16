@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Patient Signup</title>
+</head>
+<body>
+    <h2>Patient Signup</h2>
+    <form th:action="@{/patient/signup}" method="post" th:object="${patient}">
+        <label>Username:</label>
+        <input type="text" name="username" required><br>
+        <label>Email:</label>
+        <input type="email" name="email" required><br>
+        <label>Password:</label>
+        <input type="password" name="password" required><br>
+        <button type="submit">Sign Up</button>
+    </form>
+    <p th:if="${error}" th:text="${error}" style="color:red;"></p>
+</body>
+</html>

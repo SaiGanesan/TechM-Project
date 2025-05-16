@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Patient Personal Details</title>
+</head>
+<body>
+<h2>Personal Details</h2>
+
+<table>
+    <tr><td>Full Name:</td><td th:text="${record.fullName}"></td></tr>
+    <tr><td>Gender:</td><td th:text="${record.gender}"></td></tr>
+    <tr><td>Date of Birth:</td><td th:text="${record.dateOfBirth}"></td></tr>
+    <tr><td>Contact Number:</td><td th:text="${record.contactNumber}"></td></tr>
+    <tr><td>Email:</td><td th:text="${record.emailAddress}"></td></tr>
+    <tr><td>Address:</td><td th:text="${record.address}"></td></tr>
+    <tr><td>Emergency Contact Name:</td><td th:text="${record.emergencyContactName}"></td></tr>
+    <tr><td>Emergency Contact Number:</td><td th:text="${record.emergencyContactNumber}"></td></tr>
+    <tr><td>Blood Group:</td><td th:text="${record.bloodGroup}"></td></tr>
+    <tr><td>Allergies:</td><td th:text="${record.allergies}"></td></tr>
+    <tr><td>Chronic Conditions:</td><td th:text="${record.chronicConditions}"></td></tr>
+    <tr><td>Current Medications:</td><td th:text="${record.currentMedications}"></td></tr>
+    <tr><td>Doctor Assigned:</td><td th:text="${record.doctorAssigned}"></td></tr>
+    <tr><td>Diagnosis/Reason for Visit:</td><td th:text="${record.diagnosisReasonForVisit}"></td></tr>
+</table>
+
+<br/>
+<!-- Link to edit page -->
+<a th:href="@{/patient/records/edit(patientId=${record.patientId})}">
+    <button>Edit Details</button>
+</a>
+
+<form th:action="@{/}" method="get">
+    <button type="submit">Logout</button>
+</form>
+
+</body>
+</html>

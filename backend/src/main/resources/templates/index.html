@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hospital Role Selection</title>
+    <style>
+        a.button-link {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        a.button-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select Your Role</h1>
+    
+    <a th:href="@{/patient/signin}" class="button-link">Patient</a>
+    <a th:href="@{/doctor/signin}" class="button-link">Doctor</a>
+    <a th:href="@{/admin/signin}" class="button-link">Admin</a>
+</body>
+</html>
