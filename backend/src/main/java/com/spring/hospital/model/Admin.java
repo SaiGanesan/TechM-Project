@@ -9,4 +9,5 @@ public class Admin extends User {
     public Admin() {
         setRole(Role.ADMIN);
     }
+    
 }

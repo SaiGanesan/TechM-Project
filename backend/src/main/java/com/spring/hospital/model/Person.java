@@ -20,13 +20,16 @@ public abstract class Person {
         return fullName;
     }
 
+
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
+
     public String getGender() {
         return gender;
     }
+    
 
     public void setGender(String gender) {
         this.gender = gender;
