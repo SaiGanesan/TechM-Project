@@ -1,0 +1,27 @@
+services:
+  mysql:
+    container_name: mysql
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: SDMwaran@1234
+      MYSQL_DATABASE: hospital_management
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql:/var/lib/mysql/
+    networks:
+      - spring-boot-network
+  spring-boot-app:
+    container_name: hospital
+    image: hospital
+    ports:
+      - "9090:9090"
+    networks:
+      - spring-boot-network
+    depends_on:
+      - mysql
+volumes:
+  mysql:
+networks:
+  spring-boot-network:
+    driver: bridge

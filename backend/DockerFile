@@ -1,0 +1,5 @@
+FROM openjdk:17-jdk
+WORKDIR /app
+COPY target/hospital-0.0.1-SNAPSHOT.jar hospital.jar
+EXPOSE 9090
+ENTRYPOINT ["java", "-jar", "hospital.jar"]
