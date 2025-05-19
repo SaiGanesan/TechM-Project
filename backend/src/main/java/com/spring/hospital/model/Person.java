@@ -25,12 +25,10 @@ public abstract class Person {
         this.fullName = fullName;
     }
 
-
     public String getGender() {
         return gender;
     }
     
-
     public void setGender(String gender) {
         this.gender = gender;
     }

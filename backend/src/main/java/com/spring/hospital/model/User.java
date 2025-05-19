@@ -29,7 +29,6 @@ public abstract class User {
         return id;
     }
 
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -37,7 +36,6 @@ public abstract class User {
     public String getUsername() {
         return username;
     }
-    
 
     public void setUsername(String username) {
         this.username = username;
